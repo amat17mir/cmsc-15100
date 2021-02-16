@@ -1,0 +1,14 @@
+#lang typed/racket
+
+(require "../include/cs151-core.rkt")
+
+(require typed/test-engine/racket-tests)
+
+(define-struct TaxReturn
+  ([income : Integer]
+   [charity : Integer]
+   [num-adults : Integer]
+   [num-children : Integer]
+   [purchased-EV? : Boolean]
+   [covid-costs : Integer]
+   [already-paid : Integer]))

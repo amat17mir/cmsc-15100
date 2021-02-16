@@ -1,0 +1,46 @@
+#lang typed/racket
+(require "../include/cs151-core.rkt")
+(require typed/test-engine/racket-tests)
+
+;; list your collaborators in a comment
+
+(define-struct MenuItem
+  ([kind  : (U 'appetizer 'entree 'dessert)]
+   [name  : String]
+   [price : Integer] ;; <-- integer num of pennies; floats aren't good for money
+   [veg   : (U 'nonveg 'vegetarian 'vegan)]))
+
+(define-type Menu
+  (Listof MenuItem))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(: num-appetizers : Menu -> Integer)
+; counts the number of appetizers on a menu.
+
+(: names-of-entrees : Menu -> (Listof String))
+; returns the name of the entrees on the menu.
+
+(: vegetarian-friendly? : Menu -> Boolean)
+; determines whether or not there's a veggie option.
+
+(: num-vegetarian-items : Menu -> Integer)
+; counts the number of vegetarian items.
+
+(: vegan-items : Menu -> Menu)
+; returns a new menu with just vegan options.
+
+(: vegan-ratio : Menu -> Exact-Rational)
+; returns the ratio of vegan options to non-vegan options.
+
+(: average-dessert-price : Menu -> Exact-Rational)
+; takes in a list of menus and computes the average price of desserts.
+
+(: menus-with-cheaper-desserts : (Listof Menu) -> (Listof Menu))
+; takes in a list of menus, computes the average price of desserts,
+; and returns the ones that cost $5 or less.
+
+(: most-expensive : Menu -> MenuItem)
+; returns the most expensive item on the menu.
+
+(test)
